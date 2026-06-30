@@ -211,10 +211,28 @@ function inicializarCarrusel() {
   let currentIndex = 0;
   let autoPlayInterval;
 
+  const videoSlideIndex = slides.length - 1; // último slide = video
+  const ytIframe = document.getElementById("carousel-yt");
+
+  function pauseYouTube() {
+    if (ytIframe) {
+      ytIframe.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+    }
+  }
+
   function goTo(index) {
+    const prev = currentIndex;
     currentIndex = ((index % slides.length) + slides.length) % slides.length;
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
     dots.forEach((d, i) => d.classList.toggle("active", i === currentIndex));
+
+    // Pausar autoplay en el slide de video; reanudar al salir
+    if (currentIndex === videoSlideIndex) {
+      clearInterval(autoPlayInterval);
+    } else if (prev === videoSlideIndex) {
+      pauseYouTube();
+      startAutoPlay();
+    }
   }
 
   function startAutoPlay() {
@@ -223,7 +241,7 @@ function inicializarCarrusel() {
 
   function resetAutoPlay() {
     clearInterval(autoPlayInterval);
-    startAutoPlay();
+    if (currentIndex !== videoSlideIndex) startAutoPlay();
   }
 
   prevBtn?.addEventListener("click", () => { goTo(currentIndex - 1); resetAutoPlay(); });
