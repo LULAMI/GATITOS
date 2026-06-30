@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "nombre": "Vestido Rosa",
+    "descripcion": "Elegancia felina en rosa pastel",
+    "precio": 2500,
+    "imagen": "./imagen/budincito.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Camisa Dorada",
+    "descripcion": "Brillo y estilo para tu gato",
+    "precio": 3000,
+    "imagen": "./imagen/croissant.jpg"
+  }
+]
