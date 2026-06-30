@@ -23,7 +23,7 @@ miau-couture/
 ## 🚀 Deploy
 
 Sitio publicado en GitHub Pages:  
-👉 `https://<tu-usuario>.github.io/miau-couture/`
+👉https://lulami.github.io/GATITOS
 
 ## ✍️ Autora
 
