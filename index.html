@@ -3,26 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- SEO básico -->
     <meta name="description" content="Miau Couture: la tienda de moda felina más exclusiva de Buenos Aires. Ropa y accesorios para gatos, con catálogo online y carrito de compras." />
     <meta name="keywords" content="moda felina, ropa para gatos, accesorios para gatos, Miau Couture" />
     <meta name="author" content="Ludmila Mariana Bravo Ruiz Diaz" />
-
     <title>Miau Couture</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+
     <!-- Header -->
     <header>
       <div class="div-logo">
         <a class="logo" href="./index.html">Miau Couture</a>
+        <span class="subtitulo">Hablemos de moda felina</span>
       </div>
-      <h2 class="subtitulo">Hablemos de moda felina</h2>
       <nav class="header-nav">
         <ul>
-          <li><a href="./index.html">Inicio</a></li>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#productos">Productos</a></li>
           <li><a href="./paginas/contacto.html">Contacto</a></li>
         </ul>
       </nav>
@@ -32,31 +31,75 @@
     </header>
 
     <!-- Main -->
-    <main>
-      <!-- Video -->
-      <section class="video">
-        <h3>Descubre nuestra inspiración</h3>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video de moda felina" frameborder="0" allowfullscreen></iframe>
+    <main id="inicio">
+
+      <!-- Carrusel hero -->
+      <section class="carousel" aria-label="Galería de moda felina">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="./imagen/gato1-auriculares.png" alt="Auriculares Felinos" />
+            <div class="carousel-caption">
+              <h2>Auriculares Felinos</h2>
+              <p>Estilo urbano para el gato más trendy</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="./imagen/gato2-piloto.png" alt="Piloto Aventurero" />
+            <div class="carousel-caption">
+              <h2>Piloto Aventurero</h2>
+              <p>Para el gato explorador con actitud</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="./imagen/gato3-tutu.png" alt="Tutú de Ballet" />
+            <div class="carousel-caption">
+              <h2>Tutú de Ballet</h2>
+              <p>Elegancia y gracia en cada movimiento</p>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="./imagen/gato4-sweater.png" alt="Sweater Cachemir" />
+            <div class="carousel-caption">
+              <h2>Sweater Cachemir</h2>
+              <p>Calidez y sofisticación para el invierno</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
+        <button class="carousel-btn next" aria-label="Siguiente">&#8250;</button>
+        <div class="carousel-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+        </div>
       </section>
 
-      <!-- Productos: las tarjetas se generan dinámicamente desde js/script.js (fetch a data/productos.json) -->
-      <section class="productos">
+      <!-- Productos -->
+      <section class="productos" id="productos">
         <h2 class="titulo-productos">Nuestros productos</h2>
         <div class="contenedor-tarjetas">
           <p class="cargando">Cargando productos...</p>
         </div>
       </section>
 
+      <!-- Video -->
+      <section class="video">
+        <h3>Descubre nuestra inspiración</h3>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="Video de moda felina" frameborder="0" allowfullscreen></iframe>
+      </section>
+
       <!-- Formulario de contacto -->
-      <section class="contacto">
+      <section class="contacto" id="contacto">
         <h2>Dejanos tu mensaje</h2>
         <form>
-          <input type="text" placeholder="Tu nombre" required />
-          <input type="email" placeholder="Tu correo" required />
-          <textarea placeholder="Escribe tu mensaje aquí..." required></textarea>
+          <input type="text" name="nombre" placeholder="Tu nombre" required />
+          <input type="email" name="email" placeholder="Tu correo" required />
+          <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
           <button type="submit">Enviar</button>
         </form>
       </section>
+
     </main>
 
     <!-- Panel lateral del carrito -->
@@ -81,8 +124,8 @@
       <p class="firma">Hecho por Ludmila Mariana Bravo Ruiz Diaz - Talento Tech Comisión 26123</p>
       <nav>
         <ul class="footer-list">
-          <li><img src="./imagen/whatsapp.png" alt="logo de whatsapp" /></li>
-          <li><img src="./imagen/social.png" alt="logo redes sociales" /></li>
+          <li><img src="./imagen/whatsapp.png" alt="WhatsApp" /></li>
+          <li><img src="./imagen/social.png" alt="Redes sociales" /></li>
         </ul>
       </nav>
     </footer>

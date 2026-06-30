@@ -1,16 +1,30 @@
 [
   {
     "id": 1,
-    "nombre": "Vestido Rosa",
-    "descripcion": "Elegancia felina en rosa pastel",
+    "nombre": "Auriculares Felinos",
+    "descripcion": "Estilo urbano para el gato más trendy",
     "precio": 2500,
-    "imagen": "./imagen/budincito.jpg"
+    "imagen": "./imagen/gato1-auriculares.png"
   },
   {
     "id": 2,
-    "nombre": "Camisa Dorada",
-    "descripcion": "Brillo y estilo para tu gato",
-    "precio": 3000,
-    "imagen": "./imagen/croissant.jpg"
+    "nombre": "Piloto Aventurero",
+    "descripcion": "Para el gato explorador con actitud",
+    "precio": 3800,
+    "imagen": "./imagen/gato2-piloto.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Tutú de Ballet",
+    "descripcion": "Elegancia y gracia en cada movimiento",
+    "precio": 3200,
+    "imagen": "./imagen/gato3-tutu.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Sweater Cachemir",
+    "descripcion": "Calidez y sofisticación para el invierno",
+    "precio": 4100,
+    "imagen": "./imagen/gato4-sweater.png"
   }
 ]

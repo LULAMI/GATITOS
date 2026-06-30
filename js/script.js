@@ -1,7 +1,4 @@
 // ===== Miau Couture - script.js =====
-// Maneja: fetch de productos, render de tarjetas, carrito con localStorage,
-// contador dinámico, edición de cantidades, eliminación y validación del
-// formulario de contacto.
 
 const API_URL = "./data/productos.json";
 const CART_KEY = "miauCouture_carrito";
@@ -9,13 +6,12 @@ const CART_KEY = "miauCouture_carrito";
 let productos = [];
 let carrito = cargarCarrito();
 
-// ---------- Utilidades de carrito (localStorage) ----------
+// ---------- Carrito (localStorage) ----------
 function cargarCarrito() {
   try {
     const data = localStorage.getItem(CART_KEY);
     return data ? JSON.parse(data) : [];
-  } catch (error) {
-    console.error("No se pudo leer el carrito guardado:", error);
+  } catch {
     return [];
   }
 }
@@ -77,7 +73,7 @@ function cantidadTotalCarrito() {
   return carrito.reduce((acc, item) => acc + item.cantidad, 0);
 }
 
-// ---------- Render de productos (Fetch API) ----------
+// ---------- Productos ----------
 async function cargarProductos() {
   const contenedor = document.querySelector(".contenedor-tarjetas");
   if (!contenedor) return;
@@ -100,13 +96,13 @@ function renderProductos(lista) {
   contenedor.innerHTML = lista
     .map(
       (producto) => `
-      <article class="card text-dark">
+      <article class="card">
         <img src="${producto.imagen}" alt="${producto.nombre}" />
         <h3>${producto.nombre}</h3>
         <p>${producto.descripcion}</p>
-        <p>Precio: $${producto.precio.toLocaleString("es-AR")}</p>
-        <button class="btn bg-secondary text-dark btn-agregar" data-id="${producto.id}">
-          Agregar al carrito
+        <p><strong>$${producto.precio.toLocaleString("es-AR")}</strong></p>
+        <button class="btn-agregar" data-id="${producto.id}">
+          Agregar al carrito 🛒
         </button>
       </article>
     `
@@ -120,14 +116,14 @@ function renderProductos(lista) {
   });
 }
 
-// ---------- Render del carrito ----------
+// ---------- Render carrito ----------
 function renderCarrito() {
   const lista = document.getElementById("lista-carrito");
   const totalEl = document.getElementById("carrito-total");
   if (!lista || !totalEl) return;
 
   if (carrito.length === 0) {
-    lista.innerHTML = `<p class="carrito-vacio">Tu carrito está vacío.</p>`;
+    lista.innerHTML = `<p class="carrito-vacio">Tu carrito está vacío 🐱</p>`;
   } else {
     lista.innerHTML = carrito
       .map(
@@ -145,7 +141,7 @@ function renderCarrito() {
           </div>
           <div class="item-subtotal">
             <p>$${(item.precio * item.cantidad).toLocaleString("es-AR")}</p>
-            <button class="btn-eliminar" aria-label="Eliminar producto">🗑️</button>
+            <button class="btn-eliminar" aria-label="Eliminar">🗑️</button>
           </div>
         </div>
       `
@@ -168,7 +164,7 @@ function actualizarContador() {
   if (contador) contador.textContent = cantidadTotalCarrito();
 }
 
-// ---------- UI: abrir/cerrar panel del carrito ----------
+// ---------- UI carrito ----------
 function inicializarUICarrito() {
   const abrirBtn = document.getElementById("btn-abrir-carrito");
   const cerrarBtn = document.getElementById("btn-cerrar-carrito");
@@ -179,6 +175,17 @@ function inicializarUICarrito() {
   abrirBtn?.addEventListener("click", () => panel?.classList.add("abierto"));
   cerrarBtn?.addEventListener("click", () => panel?.classList.remove("abierto"));
   vaciarBtn?.addEventListener("click", vaciarCarrito);
+
+  // Cerrar al hacer click fuera del panel
+  document.addEventListener("click", (e) => {
+    if (
+      panel?.classList.contains("abierto") &&
+      !panel.contains(e.target) &&
+      e.target !== abrirBtn
+    ) {
+      panel.classList.remove("abierto");
+    }
+  });
 
   finalizarBtn?.addEventListener("click", () => {
     if (carrito.length === 0) {
@@ -191,7 +198,53 @@ function inicializarUICarrito() {
   });
 }
 
-// ---------- Mensajes al usuario ----------
+// ---------- Carrusel ----------
+function inicializarCarrusel() {
+  const track = document.querySelector(".carousel-track");
+  const slides = document.querySelectorAll(".carousel-slide");
+  const dots = document.querySelectorAll(".dot");
+  const prevBtn = document.querySelector(".carousel-btn.prev");
+  const nextBtn = document.querySelector(".carousel-btn.next");
+
+  if (!track || slides.length === 0) return;
+
+  let currentIndex = 0;
+  let autoPlayInterval;
+
+  function goTo(index) {
+    currentIndex = ((index % slides.length) + slides.length) % slides.length;
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle("active", i === currentIndex));
+  }
+
+  function startAutoPlay() {
+    autoPlayInterval = setInterval(() => goTo(currentIndex + 1), 4500);
+  }
+
+  function resetAutoPlay() {
+    clearInterval(autoPlayInterval);
+    startAutoPlay();
+  }
+
+  prevBtn?.addEventListener("click", () => { goTo(currentIndex - 1); resetAutoPlay(); });
+  nextBtn?.addEventListener("click", () => { goTo(currentIndex + 1); resetAutoPlay(); });
+  dots.forEach((dot, i) => dot.addEventListener("click", () => { goTo(i); resetAutoPlay(); }));
+
+  // Swipe táctil
+  let touchStartX = 0;
+  track.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener("touchend", (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+      goTo(diff > 0 ? currentIndex + 1 : currentIndex - 1);
+      resetAutoPlay();
+    }
+  });
+
+  startAutoPlay();
+}
+
+// ---------- Toast ----------
 function mostrarMensaje(texto) {
   let toast = document.getElementById("toast-mensaje");
   if (!toast) {
@@ -204,9 +257,9 @@ function mostrarMensaje(texto) {
   setTimeout(() => toast.classList.remove("visible"), 2500);
 }
 
-// ---------- Validación del formulario de contacto ----------
+// ---------- Formulario ----------
 function inicializarFormularioContacto() {
-  const form = document.querySelector("#form-contacto, form[action*='formspree']");
+  const form = document.querySelector("form[action*='formspree'], .contacto form, #form-contacto");
   if (!form) return;
 
   form.addEventListener("submit", (e) => {
@@ -215,23 +268,15 @@ function inicializarFormularioContacto() {
     const mensaje = form.querySelector("[name='mensaje']");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    let valido = true;
-    let error = "";
-
-    if (!nombre || nombre.value.trim() === "") {
-      valido = false;
-      error = "Por favor completá tu nombre.";
-    } else if (!email || !emailRegex.test(email.value.trim())) {
-      valido = false;
-      error = "Ingresá un correo electrónico válido.";
-    } else if (!mensaje || mensaje.value.trim() === "") {
-      valido = false;
-      error = "Escribí un mensaje antes de enviar.";
-    }
-
-    if (!valido) {
+    if (!nombre?.value.trim()) {
       e.preventDefault();
-      mostrarMensaje(error);
+      mostrarMensaje("Por favor completá tu nombre.");
+    } else if (!email || !emailRegex.test(email.value.trim())) {
+      e.preventDefault();
+      mostrarMensaje("Ingresá un correo electrónico válido.");
+    } else if (!mensaje?.value.trim()) {
+      e.preventDefault();
+      mostrarMensaje("Escribí un mensaje antes de enviar.");
     }
   });
 }
@@ -240,6 +285,7 @@ function inicializarFormularioContacto() {
 document.addEventListener("DOMContentLoaded", () => {
   cargarProductos();
   inicializarUICarrito();
+  inicializarCarrusel();
   inicializarFormularioContacto();
   actualizarContador();
   renderCarrito();
