@@ -1,4 +1,10 @@
-/* /css/style.css */
+/* /css/styles.css — Miau Couture */
+
+/* ===== Reset & base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Playfair Display", serif;
   background-color: #fce4ec;
@@ -8,14 +14,67 @@ body {
   line-height: 1.6;
 }
 
-/* Encabezado */
+/* ===== Header ===== */
 header {
-  text-align: center;
-  padding: 2.5rem 1rem;
   background-color: #fffaf0;
   border-bottom: 3px solid #d4af37;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
+.div-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #d4af37;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #b8860b;
+}
+
+.subtitulo {
+  color: #f48fb1;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ===== Nav ===== */
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav ul li a {
+  text-decoration: none;
+  color: #555;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.header-nav ul li a:hover {
+  color: #d4af37;
+}
+
+/* ===== Headings (fuera del header) ===== */
 h1 {
   color: #d4af37;
   font-size: 3rem;
@@ -28,21 +87,33 @@ h2 {
   font-weight: 400;
 }
 
-/* Secciones principales */
+/* ===== Utilidades ===== */
+.text-secondary { color: #d4af37; }
+.bg-secondary   { background-color: #d4af37; color: #fff; }
+.text-dark      { color: #333; }
+
+/* ===== Secciones principales ===== */
 .video, .productos, .contacto {
   text-align: center;
   margin: 3rem auto;
   max-width: 900px;
+  padding: 0 1rem;
 }
 
-/* Tarjetas de productos */
+/* ===== Tarjetas de productos ===== */
+.contenedor-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
 .card {
-  display: inline-block;
   background: #fffaf0;
   border: 1.5px solid #b8860b;
   border-radius: 15px;
   padding: 1.2rem;
-  margin: 1rem;
   width: 220px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
@@ -58,75 +129,107 @@ h2 {
   margin-bottom: 0.8rem;
 }
 
-/* Botones */
-button {
+/* ===== Formulario de contacto ===== */
+.form-contacto,
+.contacto form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-width: 520px;
+  margin: 1.5rem auto 0;
+  text-align: left;
+}
+
+.grupo-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.grupo-input label {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-contacto input,
+.form-contacto textarea,
+.contacto form input,
+.contacto form textarea {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid #d4af37;
+  border-radius: 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #fffaf0;
+}
+
+.form-contacto input:focus,
+.form-contacto textarea:focus,
+.contacto form input:focus,
+.contacto form textarea:focus {
+  border-color: #b8860b;
+}
+
+.titulo-contacto {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Botones ===== */
+button,
+.btn {
   background-color: #d4af37;
   color: #fff;
   border: none;
   padding: 0.8rem 1.4rem;
   border-radius: 10px;
+  font-family: "Poppins", sans-serif;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
   background-color: #b8860b;
 }
 
-/* Footer */
-footer {
-  background-color: #fffaf0;
-  text-align: center;
-  padding: 1.5rem;
-  border-top: 3px solid #d4af37;
-}
-
-footer p {
-  margin: 0.3rem 0;
-}
-
-.firma {
-  margin-top: 1rem;
-  font-style: italic;
-  color: #f48fb1;
-  font-weight: 500;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .card {
-    width: 90%;
-  }
-  iframe {
-    width: 100%;
-    height: auto;
-  }
-}
-
-/* ===== Carrito de compras ===== */
-
+/* ===== Botón carrito ===== */
 .btn-carrito {
   position: relative;
+  background: #d4af37;
+  color: #fff;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
   border: none;
-  background: transparent;
-  font-size: 1.3rem;
   cursor: pointer;
-  padding: 8px 12px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-carrito:hover {
+  background-color: #b8860b;
 }
 
 #carrito-contador {
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: inline-block;
   background: #e63946;
   color: #fff;
   border-radius: 50%;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  line-height: 1;
+  font-size: 0.75rem;
+  padding: 1px 6px;
+  margin-left: 4px;
+  font-weight: bold;
 }
 
+/* ===== Panel carrito ===== */
 .panel-carrito {
   position: fixed;
   top: 0;
@@ -159,6 +262,8 @@ footer p {
   background: transparent;
   font-size: 1.2rem;
   cursor: pointer;
+  color: #333;
+  padding: 0.2rem 0.5rem;
 }
 
 .lista-carrito {
@@ -200,10 +305,12 @@ footer p {
 .item-cantidad button {
   border: 1px solid #ccc;
   background: #fff;
+  color: #333;
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  cursor: pointer;
+  padding: 0;
+  font-size: 0.85rem;
 }
 
 .item-subtotal {
@@ -213,8 +320,10 @@ footer p {
 .item-subtotal button {
   border: none;
   background: transparent;
+  color: #555;
   cursor: pointer;
   font-size: 0.95rem;
+  padding: 0;
 }
 
 .carrito-vacio {
@@ -244,6 +353,11 @@ footer p {
   color: #333;
 }
 
+.btn-secundario:hover {
+  background: #ddd;
+}
+
+/* ===== Toast ===== */
 #toast-mensaje {
   position: fixed;
   bottom: -60px;
@@ -262,10 +376,93 @@ footer p {
   bottom: 20px;
 }
 
+/* ===== Estados de carga ===== */
 .error-carga,
 .cargando {
   text-align: center;
   width: 100%;
   padding: 20px;
   color: #777;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #fffaf0;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-top: 3px solid #d4af37;
+}
+
+footer p {
+  margin: 0.3rem 0;
+}
+
+.firma {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #f48fb1;
+  font-weight: 500;
+}
+
+.footer-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.footer-list li a {
+  text-decoration: none;
+  color: #555;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.footer-list li a:hover {
+  color: #d4af37;
+}
+
+.footer-list li img {
+  height: 28px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.footer-list li img:hover {
+  opacity: 1;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.2rem 1rem;
+  }
+
+  .header-nav ul {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }
