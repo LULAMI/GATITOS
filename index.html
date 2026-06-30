@@ -3,147 +3,166 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Miau Couture: la tienda de moda felina más exclusiva de Buenos Aires." />
-    <title>Miau Couture</title>
+
+    <!-- SEO básico -->
+    <meta name="description" content="Miau Couture: la tienda de moda felina más exclusiva de Buenos Aires. Ropa y accesorios de alta calidad para gatos." />
+    <meta name="keywords" content="moda felina, ropa para gatos, accesorios para gatos, Miau Couture, tienda online gatos" />
+    <meta name="author" content="Ludmila Mariana Bravo Ruiz Diaz" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (redes sociales) -->
+    <meta property="og:title" content="Miau Couture — Moda Felina" />
+    <meta property="og:description" content="La tienda de moda felina más exclusiva de Buenos Aires." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lulami.github.io/GATITOS/" />
+
+    <title>Miau Couture — Moda Felina</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
 
+    <!-- Skip link para accesibilidad de teclado -->
+    <a href="#productos" class="skip-link">Saltar al contenido principal</a>
+
     <!-- Header -->
-    <header>
+    <header role="banner">
       <div class="div-logo">
-        <a class="logo" href="./index.html">Miau Couture</a>
+        <a class="logo" href="./index.html" aria-label="Inicio — Miau Couture">Miau Couture</a>
         <span class="subtitulo">Hablemos de moda felina</span>
       </div>
-      <nav class="header-nav">
+      <nav class="header-nav" aria-label="Navegación principal">
         <ul>
           <li><a href="./index.html">Inicio</a></li>
           <li><a href="./index.html#productos">Productos</a></li>
-              <li><a href="./index.html#resenas">Reseñas</a></li>
+          <li><a href="./index.html#resenas">Reseñas</a></li>
           <li><a href="./paginas/contacto.html">Contacto</a></li>
         </ul>
       </nav>
-      <button id="btn-abrir-carrito" class="btn-carrito" aria-label="Abrir carrito">
-        🛒 <span id="carrito-contador">0</span>
+      <button id="btn-abrir-carrito" class="btn-carrito" aria-label="Abrir carrito de compras">
+        🛒 <span id="carrito-contador" aria-live="polite" aria-label="Cantidad de productos en el carrito">0</span>
       </button>
     </header>
 
-    <!-- Carrusel -->
-    <section class="carousel" aria-label="Galería de productos">
-      <div class="carousel-track">
+    <main id="contenido-principal">
 
-        <div class="carousel-slide">
-          <img src="./imagen/gato1-auriculares.png" alt="Auriculares Felinos" />
-          <div class="carousel-caption">
-            <h2>Auriculares Felinos</h2>
-            <p>Estilo urbano para el gato más trendy</p>
+      <!-- Carrusel -->
+      <section class="carousel" aria-label="Galería de productos destacados" aria-roledescription="carrusel">
+        <div class="carousel-track" aria-live="polite">
+
+          <div class="carousel-slide" role="group" aria-label="Slide 1 de 5">
+            <img src="./imagen/gato1-auriculares.png" alt="Gato usando auriculares felinos de peluche color crema" />
+            <div class="carousel-caption">
+              <h2>Auriculares Felinos</h2>
+              <p>Estilo urbano para el gato más trendy</p>
+            </div>
           </div>
+
+          <div class="carousel-slide" role="group" aria-label="Slide 2 de 5">
+            <img src="./imagen/gato2-piloto.png" alt="Gato con piloto de aviador aventurero" />
+            <div class="carousel-caption">
+              <h2>Piloto Aventurero</h2>
+              <p>Para el gato explorador con actitud</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide" role="group" aria-label="Slide 3 de 5">
+            <img src="./imagen/gato3-tutu.png" alt="Gato elegante con tutú de ballet rosa" />
+            <div class="carousel-caption">
+              <h2>Tutú de Ballet</h2>
+              <p>Elegancia y gracia en cada movimiento</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide" role="group" aria-label="Slide 4 de 5">
+            <img src="./imagen/gato4-sweater.png" alt="Gato abrigado con sweater de cachemir" />
+            <div class="carousel-caption">
+              <h2>Sweater Cachemir</h2>
+              <p>Calidez y sofisticación para el invierno</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide carousel-slide--video" role="group" aria-label="Slide 5 de 5 — Video">
+            <div class="video-slide-bg">
+              <iframe
+                id="carousel-yt"
+                src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1&rel=0&modestbranding=1"
+                title="Video de inspiración Miau Couture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
         </div>
 
-        <div class="carousel-slide">
-          <img src="./imagen/gato2-piloto.png" alt="Piloto Aventurero" />
-          <div class="carousel-caption">
-            <h2>Piloto Aventurero</h2>
-            <p>Para el gato explorador con actitud</p>
-          </div>
+        <button class="carousel-btn prev" aria-label="Slide anterior">&#8249;</button>
+        <button class="carousel-btn next" aria-label="Slide siguiente">&#8250;</button>
+
+        <div class="carousel-dots" role="tablist" aria-label="Indicadores del carrusel">
+          <button class="dot active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+          <button class="dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button class="dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+          <button class="dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+          <button class="dot" role="tab" aria-selected="false" aria-label="Video"></button>
         </div>
+      </section>
 
-        <div class="carousel-slide">
-          <img src="./imagen/gato3-tutu.png" alt="Tutú de Ballet" />
-          <div class="carousel-caption">
-            <h2>Tutú de Ballet</h2>
-            <p>Elegancia y gracia en cada movimiento</p>
-          </div>
+      <!-- Productos -->
+      <section class="productos" id="productos" aria-labelledby="titulo-productos">
+        <h2 id="titulo-productos">Nuestros productos</h2>
+        <div class="contenedor-tarjetas" role="list">
+          <p class="cargando">Cargando productos...</p>
         </div>
+      </section>
 
-        <div class="carousel-slide">
-          <img src="./imagen/gato4-sweater.png" alt="Sweater Cachemir" />
-          <div class="carousel-caption">
-            <h2>Sweater Cachemir</h2>
-            <p>Calidez y sofisticación para el invierno</p>
-          </div>
+      <!-- Reseñas -->
+      <section class="resenas" id="resenas" aria-labelledby="titulo-resenas">
+        <h2 id="titulo-resenas">Reseñas de nuestros clientes</h2>
+        <div class="contenedor-resenas">
+          <article class="resena-card">
+            <p class="resena-texto">"Mi gato Mochi nunca se vio tan elegante. Los auriculares felinos son increíbles."</p>
+            <p class="resena-autor">— Valentina G.</p>
+            <p class="resena-estrellas" aria-label="5 estrellas">⭐⭐⭐⭐⭐</p>
+          </article>
+          <article class="resena-card">
+            <p class="resena-texto">"El tutú de ballet es de una calidad impresionante. Mi gatita lo usa hasta para dormir."</p>
+            <p class="resena-autor">— Florencia M.</p>
+            <p class="resena-estrellas" aria-label="5 estrellas">⭐⭐⭐⭐⭐</p>
+          </article>
+          <article class="resena-card">
+            <p class="resena-texto">"El sweater cachemir llegó perfecto y muy bien empaquetado. ¡Lo recomiendo!"</p>
+            <p class="resena-autor">— Camila R.</p>
+            <p class="resena-estrellas" aria-label="5 estrellas">⭐⭐⭐⭐⭐</p>
+          </article>
+          <article class="resena-card">
+            <p class="resena-texto">"El piloto aventurero le queda espectacular a mi gato. Ya pedí el segundo."</p>
+            <p class="resena-autor">— Lucía P.</p>
+            <p class="resena-estrellas" aria-label="5 estrellas">⭐⭐⭐⭐⭐</p>
+          </article>
         </div>
+      </section>
 
-        <div class="carousel-slide carousel-slide--video">
-          <div class="video-slide-bg">
-            <iframe
-              id="carousel-yt"
-              src="https://www.youtube.com/embed/VIDEO_ID?enablejsapi=1&rel=0&modestbranding=1"
-              title="Video Miau Couture"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
+      <!-- Contacto -->
+      <section class="contacto" id="contacto" aria-labelledby="titulo-contacto">
+        <h2 id="titulo-contacto">Dejanos tu mensaje</h2>
+        <form action="https://formspree.io/f/xpwzgkvd" method="POST" novalidate>
+          <input type="text" name="nombre" placeholder="Tu nombre" aria-label="Tu nombre" required />
+          <input type="email" name="email" placeholder="Tu correo" aria-label="Tu correo electrónico" required />
+          <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." aria-label="Tu mensaje" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
 
-      </div>
-
-      <button class="carousel-btn prev" aria-label="Anterior">&#8249;</button>
-      <button class="carousel-btn next" aria-label="Siguiente">&#8250;</button>
-
-      <div class="carousel-dots" role="tablist">
-        <button class="dot active" aria-label="Slide 1"></button>
-        <button class="dot" aria-label="Slide 2"></button>
-        <button class="dot" aria-label="Slide 3"></button>
-        <button class="dot" aria-label="Slide 4"></button>
-        <button class="dot" aria-label="Video"></button>
-      </div>
-    </section>
-
-    <!-- Productos -->
-    <section class="productos" id="productos">
-      <h2>Nuestros productos</h2>
-      <div class="contenedor-tarjetas">
-        <p class="cargando">Cargando productos...</p>
-      </div>
-    </section>
-
-    <!-- Reseñas -->
-    <section class="resenas" id="resenas">
-      <h2>Reseñas de nuestros clientes</h2>
-      <div class="contenedor-resenas">
-        <article class="resena-card">
-          <p class="resena-texto">"Mi gato Mochi nunca se vio tan elegante. Los auriculares felinos son increíbles."</p>
-          <p class="resena-autor">— Valentina G.</p>
-          <p class="resena-estrellas">⭐⭐⭐⭐⭐</p>
-        </article>
-        <article class="resena-card">
-          <p class="resena-texto">"El tutú de ballet es de una calidad impresionante. Mi gatita lo usa hasta para dormir."</p>
-          <p class="resena-autor">— Florencia M.</p>
-          <p class="resena-estrellas">⭐⭐⭐⭐⭐</p>
-        </article>
-        <article class="resena-card">
-          <p class="resena-texto">"El sweater cachemir llegó perfecto y muy bien empaquetado. ¡Lo recomiendo!"</p>
-          <p class="resena-autor">— Camila R.</p>
-          <p class="resena-estrellas">⭐⭐⭐⭐⭐</p>
-        </article>
-        <article class="resena-card">
-          <p class="resena-texto">"El piloto aventurero le queda espectacular a mi gato. Ya pedí el segundo."</p>
-          <p class="resena-autor">— Lucía P.</p>
-          <p class="resena-estrellas">⭐⭐⭐⭐⭐</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contacto -->
-    <section class="contacto" id="contacto">
-      <h2>Dejanos tu mensaje</h2>
-      <form action="https://formspree.io/f/xpwzgkvd" method="POST">
-        <input type="text" name="nombre" placeholder="Tu nombre" required />
-        <input type="email" name="email" placeholder="Tu correo" required />
-        <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
+    </main>
 
     <!-- Panel carrito -->
-    <aside id="panel-carrito" class="panel-carrito" aria-label="Carrito de compras">
+    <aside id="panel-carrito" class="panel-carrito" aria-label="Carrito de compras" aria-hidden="true">
       <div class="panel-carrito-header">
         <h2>Tu carrito</h2>
         <button id="btn-cerrar-carrito" aria-label="Cerrar carrito">✕</button>
       </div>
-      <div id="lista-carrito" class="lista-carrito"></div>
+      <div id="lista-carrito" class="lista-carrito" role="list"></div>
       <div class="panel-carrito-footer">
         <p>Total: <span id="carrito-total">$0</span></p>
         <button id="btn-vaciar-carrito" class="btn-secundario">Vaciar carrito</button>
@@ -152,20 +171,20 @@
     </aside>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
       <p>Ubicación: Buenos Aires, Argentina</p>
-      <p>Email: contacto@miau-couture.com</p>
+      <p>Email: <a href="mailto:contacto@miau-couture.com">contacto@miau-couture.com</a></p>
       <p>Horario: Lunes a Viernes 9:00 - 18:00</p>
       <p class="firma">Hecho por Ludmila Mariana Bravo Ruiz Diaz - Talento Tech Comisión 26123</p>
-      <nav class="footer-social">
-        <a href="https://wa.me/5491112345678" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-icon-link">
-          <svg class="social-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+      <nav class="footer-social" aria-label="Redes sociales">
+        <a href="https://wa.me/5491112345678" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" class="social-icon-link">
+          <svg class="social-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
             <rect width="48" height="48" rx="12" fill="#25D366"/>
             <path fill="#fff" d="M24 10C16.27 10 10 16.27 10 24c0 2.52.7 4.88 1.9 6.9L10 38l7.35-1.87A13.93 13.93 0 0024 38c7.73 0 14-6.27 14-14S31.73 10 24 10zm7.1 19.1c-.3.84-1.76 1.6-2.44 1.7-.63.1-1.42.14-2.3-.14-.53-.17-1.21-.4-2.08-.78-3.66-1.58-6.05-5.27-6.23-5.52-.18-.25-1.47-1.96-1.47-3.74s.93-2.65 1.27-3.02c.33-.37.72-.46.96-.46.24 0 .48.002.69.01.22.01.52-.08.81.62.3.72 1.02 2.5 1.11 2.68.09.18.15.4.03.64-.12.24-.18.39-.36.6-.18.21-.38.47-.54.63-.18.18-.37.38-.16.74.21.36.93 1.54 2 2.5 1.38 1.22 2.54 1.6 2.9 1.78.36.18.57.15.78-.09.21-.24.9-1.05 1.14-1.41.24-.36.48-.3.81-.18.33.12 2.1 1 2.46 1.18.36.18.6.27.69.42.09.15.09.87-.21 1.71z"/>
           </svg>
         </a>
-        <a href="https://instagram.com/miau.couture" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon-link">
-          <svg class="social-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <a href="https://instagram.com/miau.couture" target="_blank" rel="noopener noreferrer" aria-label="Seguinos en Instagram" class="social-icon-link">
+          <svg class="social-icon" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
             <defs>
               <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
                 <stop offset="0%" style="stop-color:#f09433"/>
